@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="books_schema")
+@Table(name="books")
 public class Book {
 	
 	@Id
@@ -39,10 +39,8 @@ public class Book {
 	@NotNull
 	@Min(100)
 	private Integer numberOfPages;
-
 	
 	public Book() {
-		
 	}
 	
 	public Book(String title, String description, String language, Integer numberOfPages) {
@@ -88,7 +86,7 @@ public class Book {
 		return numberOfPages;
 	}
 
-	public void setNumberOfPages(Integer numberOfPages) {
+	public void setNumberOfpages(Integer numberOfPages) {
 		this.numberOfPages = numberOfPages;
 	}
 
@@ -107,13 +105,15 @@ public class Book {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
+
+
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date updatedAt;
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date updatedAt;	
+
 	@PrePersist
 	protected void onCreated() {
 		this.createdAt = new Date();
@@ -123,11 +123,4 @@ public class Book {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	
-	
-	
-	
-	
-	
-
 }
