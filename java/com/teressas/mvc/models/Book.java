@@ -106,7 +106,6 @@ public class Book {
 		this.updatedAt = updatedAt;
 	}
 
-
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
